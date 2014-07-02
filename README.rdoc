@@ -1,28 +1,14 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
+This is a practice app that searches Magic: The Gathering cards.  It includes the use of fancy autocomplete thanks to typeahead.js (http://twitter.github.io/typeahead.js/)
 
 * Database initialization
 
+** Download AllSets.json from http://mtgjson.com/
+** Run `rake card_data:import[/somedir/AllSets.json]`
+
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+** The test suite requires the real card data to be inserted into the test database (e.g. `RAILS_ENV=test rake card_data:import[/somedir/AllSets.json]`)
+** `bundle exec rspec`
 
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.

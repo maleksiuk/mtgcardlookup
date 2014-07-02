@@ -33,4 +33,11 @@ RSpec.describe Card, :type => :model do
     expect(result_names).to include("Anax and Cymede")
   end
   
+  it "searches for cards other than Anax and Cymede" do
+    results = Card.search("badg")
+    result_names = results.map(&:name)
+    
+    expect(result_names).to include("Charging Badger")
+  end
+  
 end
