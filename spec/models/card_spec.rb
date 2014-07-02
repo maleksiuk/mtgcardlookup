@@ -38,6 +38,7 @@ RSpec.describe Card, :type => :model do
     result_names = results.map(&:name)
     
     expect(result_names).to include("Charging Badger")
+    expect(result_names).not_to include("Anax and Cymede")
   end
   
 end

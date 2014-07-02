@@ -1,11 +1,9 @@
 class HomeController < ApplicationController
   
-  def index
-    
+  def index    
     if params[:card_name]
-      @card = Card.where(:name => params[:card_name]).first
+      @card = Card.where("lower(name) = ?", params[:card_name].downcase).first
     end
-    
   end
   
   def search
