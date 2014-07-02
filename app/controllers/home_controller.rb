@@ -1,6 +1,11 @@
 class HomeController < ApplicationController
   
-  def index    
+  def index
+    
+    if params[:card_name]
+      @card = Card.where(:name => params[:card_name]).first
+    end
+    
   end
   
   def search

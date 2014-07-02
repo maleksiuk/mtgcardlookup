@@ -2,9 +2,15 @@
 
 <%= form_tag root_path, method: 'get' do %>
   <div id="card_search">
-  	<%= text_field_tag 'search', nil, placeholder: 'Enter card name', class: 'typeahead' %>
+  	<%= text_field_tag 'card_name', nil, placeholder: 'Enter card name', class: 'typeahead' %>
   </div>
-  <%#= submit_tag 'Search' %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+<% if @card %>
+
+  <%= image_tag "http://mtgimage.com/multiverseid/#{@card.multiverseid}.jpg" %>  <%# mtodo -- put url somewhere else %>
+
 <% end %>
 
 
