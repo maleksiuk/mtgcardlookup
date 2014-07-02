@@ -7,10 +7,8 @@ namespace :card_data do
     else
       puts "Attempting to import #{args.filename}..."
       
-      counter = 0
       File.open(args.filename, "r") do |infile|
-          while (line = infile.gets)
-              
+          while (line = infile.gets)              
               data = ActiveSupport::JSON.decode(line)
               
               ['THS', 'BNG', 'JOU'].each do |set_code|                
@@ -20,22 +18,11 @@ namespace :card_data do
                 cards.each do |card|
                   card = Card.new(:name => card['name'], :cardtype => card['type'], :bodytext => card['text'], :power => card['power'], :toughness => card['toughness'], :multiverseid => card['multiverseid'])
                   card.save
-                end                                
+                end
               end
           end
       end
-      
-      
-      
     end
-
-    
-    
-  
-    
-    # ActiveSupport::JSON.decode()
-    
-    
   end
 
 end
