@@ -1,2 +1,27 @@
 
-hello there
+
+<%= form_tag root_path, method: 'get' do %>
+  <div id="card_search">
+  	<%= text_field_tag 'search', nil, placeholder: 'Enter card name', class: 'typeahead' %>
+  </div>
+  <%#= submit_tag 'Search' %>
+<% end %>
+
+
+<%= javascript_tag do -%>
+
+var magicCardsBloodhound = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  remote: '../home/search.json?q=%QUERY'
+});
+ 
+magicCardsBloodhound.initialize();
+
+$('#card_search .typeahead').typeahead(null, {
+  name: 'magic-cards',
+  displayKey: 'value',
+  source: magicCardsBloodhound.ttAdapter()
+});
+
+<% end -%>

@@ -1,5 +1,36 @@
 require 'rails_helper'
 
 RSpec.describe Card, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  it "searches based on what a card name starts with" do
+    results = Card.search("Ana")
+    result_names = results.map(&:name)
+    
+    expect(result_names).to include("Anax and Cymede")
+    expect(result_names).not_to include("Baleful Eidolon")    
+  end
+  
+  it "searches based on what a card name ends with" do
+    results = Card.search("mede")
+    result_names = results.map(&:name)
+    
+    expect(result_names).to include("Anax and Cymede")
+    expect(result_names).not_to include("Baleful Eidolon")
+  end
+  
+  it "searches based on what a card name contains" do
+    results = Card.search("and Cy")
+    result_names = results.map(&:name)
+    
+    expect(result_names).to include("Anax and Cymede")
+    expect(result_names).not_to include("Baleful Eidolon")
+  end
+  
+  it "searches without caring about casing" do
+    results = Card.search("anaX")
+    result_names = results.map(&:name)
+    
+    expect(result_names).to include("Anax and Cymede")
+  end
+  
 end
