@@ -1,4 +1,4 @@
-== README
+# README
 
 This is a practice app that searches Magic: The Gathering cards.  It includes the use of fancy autocomplete thanks to typeahead.js (http://twitter.github.io/typeahead.js/)
 
